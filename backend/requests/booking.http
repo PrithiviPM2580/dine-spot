@@ -1,0 +1,26 @@
+@baseUrl = http://localhost:3000/api/bookings
+@token = YOUR_JWT_TOKEN
+@bookingId = YOUR_BOOKING_ID
+
+
+### Create a booking
+POST {{baseUrl}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "restaurant": "64f123456789abcdef123456",
+  "date": "2026-08-20",
+  "time": "19:00",
+  "guests": 2
+}
+
+
+### Get my bookings
+GET {{baseUrl}}/my
+Authorization: Bearer {{token}}
+
+
+### Cancel my booking
+PUT {{baseUrl}}/{{bookingId}}/cancel
+Authorization: Bearer {{token}}
