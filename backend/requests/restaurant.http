@@ -1,0 +1,20 @@
+@baseUrl = http://localhost:3000/api/restaurants
+
+### Get all restaurants
+GET {{baseUrl}}
+Accept: application/json
+
+
+### Get featured restaurants
+GET {{baseUrl}}/featured
+Accept: application/json
+
+
+### Get restaurant by slug
+GET {{baseUrl}}/the-fancy-restaurant
+Accept: application/json
+
+
+### Get restaurant availability
+GET {{baseUrl}}/64f123456789abcdef123456/availability?date=2026-08-20
+Accept: application/json

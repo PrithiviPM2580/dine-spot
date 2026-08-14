@@ -24,7 +24,7 @@ export const getRestaurantBySlugParamsSchema = z.object({
 });
 
 export const getRestaurantAvailabilityQuerySchema = z.object({
-  date: z.string().trim().optional(),
+  date: z.iso.date(),
 });
 
 export const getRestaurantAvailabilityParamsSchema = z.object({
