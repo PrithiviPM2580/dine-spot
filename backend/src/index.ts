@@ -6,6 +6,11 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import { envConfig } from "./config/env-config";
 import { connectToDatabase } from "./config/db-config";
+import router from "./routes/index-route";
+import {
+  globalErrorHandler,
+  notFoundHandler,
+} from "./middlewares/global-error-handler-middleware";
 
 const app: Application = express();
 const PORT: number = envConfig.PORT;
@@ -17,11 +22,16 @@ app.use(helmet());
 app.use(morgan("dev"));
 app.use(cookieParser());
 
+app.use(router);
+
+app.use(notFoundHandler);
+app.use(globalErrorHandler);
+
 async function startServer() {
   try {
     await connectToDatabase();
 
-    app.listen(envConfig.PORT, () => {
+    app.listen(PORT, () => {
       console.log(
         `🚀 Server is running in ${envConfig.NODE_ENV} mode on http://localhost:${envConfig.PORT}`,
       );
