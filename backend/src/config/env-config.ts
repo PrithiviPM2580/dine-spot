@@ -8,6 +8,7 @@ export const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(3000),
 
   JWT_SECRET: z.string().min(32),
+  JWT_EXPIRATION: z.enum(["1h", "1d", "7d", "30d"]).default("7d"),
 
   DATABASE_URL: z.string().min(1),
 });
