@@ -3,6 +3,7 @@ import authRouter from "./auth-route";
 import restaurantRouter from "./restaurant-route";
 import bookingRouter from "./booking-route";
 import ownerRouter from "./owner-route";
+import adminRouter from "./admin-route";
 
 const router: Router = Router();
 
@@ -18,5 +19,6 @@ router.use("/api/auth", authRouter);
 router.use("/api/restaurants", restaurantRouter);
 router.use("/api/bookings", bookingRouter);
 router.use("/api/owner", ownerRouter);
+router.use("/api/admin", adminRouter);
 
 export default router;
