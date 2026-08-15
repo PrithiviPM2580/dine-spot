@@ -11,6 +11,7 @@ import { validateRequest } from "../middlewares/validate-request-middleware";
 import {
   createOwnerRestaurantSchema,
   updateBookingStatusParamsSchema,
+  updateBookingStatusSchema,
   updateOwnerRestaurantSchema,
 } from "../validation/owner-validation";
 import { upload } from "../middlewares/multer-middleware";
@@ -52,7 +53,10 @@ ownerRouter
   .put(
     requireAuth,
     requireRole("owner"),
-    validateRequest({ params: updateBookingStatusParamsSchema }),
+    validateRequest({
+      body: updateBookingStatusSchema,
+      params: updateBookingStatusParamsSchema,
+    }),
     asyncHandler(updateBookingStatus),
   );
 export default ownerRouter;
